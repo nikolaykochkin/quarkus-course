@@ -6,8 +6,6 @@ import jakarta.inject.Inject;
 import name.nikolaikochkin.jdbc.Artist;
 import org.junit.jupiter.api.Test;
 
-import java.sql.SQLException;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -19,6 +17,10 @@ public class ArtistRepositoryTest {
     @Test
     @TestTransaction
     void shouldCreateAndFindAnArtist() {
+        long count = repository.count();
+        int size = repository.listAll().size();
+        assertEquals(count, size);
+
         Artist expected = new Artist("name", "bio");
 
         repository.persist(expected);
@@ -28,5 +30,10 @@ public class ArtistRepositoryTest {
 
         assertEquals(expected.name, actual.name);
         assertEquals(expected.bio, actual.bio);
+
+        assertEquals(count + 1, repository.count());
+        repository.deleteById(expected.id);
+        assertEquals(count, repository.count());
     }
+
 }

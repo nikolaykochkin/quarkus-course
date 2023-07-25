@@ -5,6 +5,10 @@ plugins {
 
 dependencies {
     implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+    implementation 'io.quarkus:quarkus-resteasy-qute'
+    implementation 'io.quarkus:quarkus-smallrye-openapi'
+    implementation 'io.quarkus:quarkus-resteasy-jsonb'
+    implementation 'io.quarkus:quarkus-resteasy'
     implementation 'io.quarkus:quarkus-hibernate-orm-panache'
     implementation 'io.quarkus:quarkus-jdbc-postgresql'
     implementation 'io.quarkus:quarkus-arc'
@@ -14,5 +18,6 @@ dependencies {
     implementation(project(':customer')) {
         exclude group: 'io.quarkus', module: 'quarkus-jdbc-mariadb'
     }
+    testImplementation 'io.quarkus:quarkus-jdbc-h2'
     testImplementation 'io.quarkus:quarkus-junit5'
 }

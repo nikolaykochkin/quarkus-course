@@ -1,0 +1,16 @@
+{#include base.html}
+    {#title}Book {book.id}{/title}
+    {#body}
+        <ul>
+            <li>Id: {book.id}</li>
+            <li>Title: {book.title}</li>
+            <li>Description: {book.description}</li>
+            <li>Price: {book.price}</li>
+            <li>ISBN: {book.isbn}</li>
+            <li>Number of pages: {book.nbOfPages}</li>
+            <li>Publication date: {book.publicationDate}</li>
+            <li>Language: {book.language}</li>
+            <li>Created date: {book.createdDate}</li>
+        </ul>
+    {/body}
+{/include}
